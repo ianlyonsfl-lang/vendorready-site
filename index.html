@@ -46,10 +46,34 @@
     .btn:hover { background: var(--amber-light); transform: translateY(-1px); }
 
     /* HERO */
-    .hero { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; max-width: 760px; padding-top: 5rem; padding-bottom: 5rem; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 5.5vw, 4.4rem); font-weight: 900; line-height: 1.07; letter-spacing: -0.03em; margin-bottom: 1.6rem; }
+    .hero { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; max-width: 800px; padding-top: 5rem; padding-bottom: 5rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 5.5vw, 4.4rem); font-weight: 900; line-height: 1.07; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
     .hero h1 em { font-style: italic; color: var(--amber); }
-    .hero-sub { font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--muted); max-width: 52ch; margin-bottom: 2.8rem; }
+    .hero-service {
+      font-size: 1.1rem; font-weight: 400; color: var(--ink);
+      margin-bottom: 1rem; line-height: 1.6;
+    }
+    .hero-sub { font-size: 1rem; font-weight: 300; line-height: 1.75; color: var(--muted); max-width: 52ch; margin-bottom: 1.6rem; }
+
+    .trust-line {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--rule);
+      border-radius: 2px; padding: 0.7rem 1.2rem;
+      font-size: 0.82rem; color: var(--muted);
+      margin-bottom: 2.4rem;
+    }
+    .trust-line::before { content: '●'; color: #5a9e5a; font-size: 0.6rem; }
+
+    .example-box {
+      background: var(--surface); border: 1px solid var(--rule);
+      border-left: 3px solid var(--amber);
+      border-radius: 2px; padding: 1.2rem 1.6rem;
+      margin-bottom: 2.4rem; max-width: 56ch;
+    }
+    .example-box .ex-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.4rem; }
+    .example-box p { font-size: 0.9rem; color: var(--ink); line-height: 1.6; }
+    .example-box p strong { font-weight: 500; }
+    .example-box .arrow { color: var(--amber); margin: 0 0.3rem; }
 
     /* HOW */
     .how { background: var(--ink); color: var(--cream); }
@@ -125,21 +149,30 @@
 
 <nav>
   <a href="#" class="logo">Vendor<span>Ready</span></a>
-  <a href="#cta" class="nav-btn">Request Contractors</a>
+  <a href="#cta" class="nav-btn">Request Contractors Now</a>
 </nav>
 
 <!-- SECTION 1: HERO -->
 <section class="hero">
-  <div class="label">Contractor Matching</div>
+  <div class="label">Done-For-You Contractor Matching</div>
   <h1>Get reliable contractors<br><em>ready to hire</em> —<br>without the back-and-forth.</h1>
-  <p class="hero-sub">VendorReady finds and vets contractors for your project so you don't waste time or risk hiring the wrong one.</p>
-  <a href="#cta" class="btn">Request Contractors</a>
+  <p class="hero-service">We personally find and vet contractors for your project — so you don't have to.</p>
+  <p class="hero-sub">Tell us what you need. We handle the search, vetting, and shortlist. You just make the call.</p>
+
+  <div class="trust-line">Currently helping investors and property owners find reliable contractors faster.</div>
+
+  <div class="example-box">
+    <div class="ex-label">Example</div>
+    <p><strong>"Need an HVAC contractor in Miami?"</strong><span class="arrow">→</span>We send you 2–3 vetted options you can call immediately.</p>
+  </div>
+
+  <a href="#cta" class="btn">Send Your Project — Get Contractors in 24–48 Hours</a>
 </section>
 
 <!-- SECTION 2: HOW IT WORKS -->
 <section class="how" id="how">
   <div class="label">The Process</div>
-  <h2>Three steps. Zero guesswork.</h2>
+  <h2>Three steps. We do the work.</h2>
   <div class="steps">
     <div class="step reveal">
       <div class="step-num">01</div>
@@ -151,13 +184,13 @@
       <div class="step-num">02</div>
       <h3>We find & vet contractors</h3>
       <div class="step-detail">Reliability, reviews, responsiveness</div>
-      <p>We filter out the noise and only bring you contractors with a proven track record.</p>
+      <p>We do the legwork — filtering for contractors with a proven track record in your area.</p>
     </div>
     <div class="step reveal" style="transition-delay:0.24s">
       <div class="step-num">03</div>
       <h3>You get 2–3 ready-to-call options</h3>
       <div class="step-detail">No guesswork. No wasted time.</div>
-      <p>Review your shortlist and make a confident hire — usually within 24–48 hours.</p>
+      <p>Review your shortlist and make a confident hire — delivered within 24–48 hours.</p>
     </div>
   </div>
 </section>
@@ -202,9 +235,9 @@
       <div class="compare-head">With VendorReady</div>
       <ul class="compare-list">
         <li><span class="icon-check">✓</span> Curated, vetted contractors only</li>
-        <li><span class="icon-check">✓</span> Filtered for reliability &amp; reviews</li>
-        <li><span class="icon-check">✓</span> Faster decisions, less back-and-forth</li>
+        <li><span class="icon-check">✓</span> We personally handle the search</li>
         <li><span class="icon-check">✓</span> 2–3 ready-to-call options delivered</li>
+        <li><span class="icon-check">✓</span> Faster decisions, less stress</li>
         <li><span class="icon-check">✓</span> Less risk, better outcomes</li>
       </ul>
     </div>
@@ -213,13 +246,13 @@
 
 <!-- SECTION 5: CTA -->
 <section class="cta-section" id="cta">
-  <div class="label">Get Started</div>
+  <div class="label">Get Started Today</div>
   <h2>Need contractors<br>for a project?</h2>
-  <p>Send your request and we'll deliver vetted options within 24–48 hours.</p>
-  <a href="https://forms.google.com" class="btn" target="_blank">Get Contractors Now</a>
+  <p>Send your request and we'll personally deliver vetted, ready-to-call options within 24–48 hours.</p>
+  <a href="https://forms.google.com" class="btn" target="_blank">Request Contractors Now</a>
   <div class="cta-options">
     <span class="cta-or">or</span>
-    <span class="cta-email">Email us at <a href="mailto:hello@vendorready.com">hello@vendorready.com</a></span>
+    <span class="cta-email">Email us directly at <a href="mailto:hello@usevendorready.com">hello@usevendorready.com</a></span>
   </div>
 </section>
 
