@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VendorReady — Reliable Contractors, Ready to Hire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F6F1E9; --ink: #1B1814; --amber: #C8873A;
+      --amber-light: #E8A85A; --muted: #8A7A6A; --rule: #DDD5C8; --surface: #EDE8DF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 5vw; border-bottom: 1px solid var(--rule);
+      position: sticky; top: 0; background: var(--cream); z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+    .logo span { color: var(--amber); }
+    .nav-btn {
+      background: var(--amber); color: var(--ink); font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500; padding: 0.6rem 1.4rem; border-radius: 2px;
+      border: none; cursor: pointer; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--amber-light); }
+
+    section { padding: 6rem 5vw; }
+    .label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--amber); margin-bottom: 1.4rem;
+    }
+    .label::before { content: ''; display: inline-block; width: 1.6rem; height: 1px; background: var(--amber); }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; }
+    h2 em { font-style: italic; color: var(--amber); }
+    .btn {
+      display: inline-block; background: var(--amber); color: var(--ink);
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+      padding: 1rem 2.4rem; border-radius: 2px; border: none; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: var(--amber-light); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; max-width: 760px; padding-top: 5rem; padding-bottom: 5rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 5.5vw, 4.4rem); font-weight: 900; line-height: 1.07; letter-spacing: -0.03em; margin-bottom: 1.6rem; }
+    .hero h1 em { font-style: italic; color: var(--amber); }
+    .hero-sub { font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--muted); max-width: 52ch; margin-bottom: 2.8rem; }
+
+    /* HOW */
+    .how { background: var(--ink); color: var(--cream); }
+    .how .label { color: var(--amber); }
+    .how .label::before { background: var(--amber); }
+    .how h2 { color: var(--cream); margin-bottom: 3.6rem; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; }
+    .step { background: var(--ink); padding: 2.8rem 2.2rem; transition: background 0.25s; }
+    .step:hover { background: rgba(200,135,58,0.1); }
+    .step-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: rgba(200,135,58,0.2); line-height: 1; margin-bottom: 1.4rem; }
+    .step h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--cream); }
+    .step-detail { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.02em; color: var(--amber); margin-bottom: 0.7rem; }
+    .step p { font-size: 0.88rem; font-weight: 300; color: rgba(245,240,232,0.55); line-height: 1.7; }
+
+    /* WHO */
+    .who { border-top: 1px solid var(--rule); }
+    .who-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .who h2 { margin-bottom: 1rem; }
+    .who-intro { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .who-list li { display: flex; align-items: flex-start; gap: 1rem; font-size: 0.95rem; line-height: 1.5; }
+    .who-list .dot { width: 8px; height: 8px; background: var(--amber); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .who-visual { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 2.8rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .who-tag { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; background: var(--cream); border: 1px solid var(--rule); border-radius: 3px; font-size: 0.9rem; font-weight: 400; transition: border-color 0.2s, transform 0.2s; }
+    .who-tag:hover { border-color: var(--amber); transform: translateX(4px); }
+    .who-tag .tag-icon { font-size: 1.3rem; }
+
+    /* WHY */
+    .why { background: var(--surface); border-top: 1px solid var(--rule); }
+    .why h2 { margin-bottom: 3.4rem; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+    .compare-col { border-radius: 4px; padding: 2.4rem 2.2rem; }
+    .compare-col.bad { background: var(--cream); border: 1px solid var(--rule); }
+    .compare-col.good { background: var(--ink); border: 1px solid var(--ink); }
+    .compare-head { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem; padding-bottom: 1rem; border-bottom: 1px solid; }
+    .compare-col.bad .compare-head { color: var(--muted); border-color: var(--rule); }
+    .compare-col.good .compare-head { color: var(--amber); border-color: rgba(200,135,58,0.3); }
+    .compare-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .compare-list li { display: flex; align-items: flex-start; gap: 0.9rem; font-size: 0.9rem; line-height: 1.5; }
+    .compare-col.bad .compare-list li { color: var(--muted); }
+    .compare-col.good .compare-list li { color: rgba(245,240,232,0.8); }
+    .icon-x { color: #b04a4a; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .icon-check { color: var(--amber); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* CTA */
+    .cta-section { text-align: center; border-top: 1px solid var(--rule); padding: 7rem 5vw; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,135,58,0.07) 0%, transparent 70%); pointer-events: none; }
+    .cta-section .label { justify-content: center; }
+    .cta-section h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1.2rem; }
+    .cta-section p { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 46ch; margin: 0 auto 2.8rem; }
+    .cta-options { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1.6rem; }
+    .cta-or { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .cta-email { font-size: 0.88rem; color: var(--muted); }
+    .cta-email a { color: var(--ink); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+    .cta-email a:hover { color: var(--amber); }
+
+    footer { padding: 2rem 5vw; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+    footer .logo { font-size: 1.05rem; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 780px) {
+      .steps { grid-template-columns: 1fr; }
+      .who-inner { grid-template-columns: 1fr; gap: 2.4rem; }
+      .compare { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Vendor<span>Ready</span></a>
+  <a href="#cta" class="nav-btn">Request Contractors</a>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section class="hero">
+  <div class="label">Contractor Matching</div>
+  <h1>Get reliable contractors<br><em>ready to hire</em> —<br>without the back-and-forth.</h1>
+  <p class="hero-sub">VendorReady finds and vets contractors for your project so you don't waste time or risk hiring the wrong one.</p>
+  <a href="#cta" class="btn">Request Contractors</a>
+</section>
+
+<!-- SECTION 2: HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="label">The Process</div>
+  <h2>Three steps. Zero guesswork.</h2>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Tell us what you need</h3>
+      <div class="step-detail">HVAC, plumbing, electrical, and more</div>
+      <p>Share your project type, location, and timeline. Takes less than two minutes.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.12s">
+      <div class="step-num">02</div>
+      <h3>We find & vet contractors</h3>
+      <div class="step-detail">Reliability, reviews, responsiveness</div>
+      <p>We filter out the noise and only bring you contractors with a proven track record.</p>
+    </div>
+    <div class="step reveal" style="transition-delay:0.24s">
+      <div class="step-num">03</div>
+      <h3>You get 2–3 ready-to-call options</h3>
+      <div class="step-detail">No guesswork. No wasted time.</div>
+      <p>Review your shortlist and make a confident hire — usually within 24–48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WHO IT'S FOR -->
+<section class="who" id="who">
+  <div class="who-inner">
+    <div class="reveal">
+      <div class="label">Who It's For</div>
+      <h2>Built for people who need reliable contractors <em>fast.</em></h2>
+      <p class="who-intro">If you manage properties, flip homes, or oversee facilities, you know how painful it is to find someone trustworthy on short notice.</p>
+      <ul class="who-list">
+        <li><div class="dot"></div><span><strong>Real estate investors &amp; flippers</strong> — tight timelines, multiple projects</span></li>
+        <li><div class="dot"></div><span><strong>Property managers</strong> — tenant issues can't wait</span></li>
+        <li><div class="dot"></div><span><strong>Schools &amp; facilities teams</strong> — need accountability and reliability</span></li>
+      </ul>
+    </div>
+    <div class="who-visual reveal" style="transition-delay:0.15s">
+      <div class="who-tag"><span class="tag-icon">🏚️</span> Real Estate Investors &amp; Flippers</div>
+      <div class="who-tag"><span class="tag-icon">🏢</span> Property Managers</div>
+      <div class="who-tag"><span class="tag-icon">🏫</span> Schools &amp; Facilities Teams</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: WHY VENDORREADY -->
+<section class="why" id="why">
+  <div class="label">Why VendorReady</div>
+  <h2>Why not just <em>Google it?</em></h2>
+  <div class="compare">
+    <div class="compare-col bad reveal">
+      <div class="compare-head">On your own</div>
+      <ul class="compare-list">
+        <li><span class="icon-x">✕</span> Endless options, no clarity</li>
+        <li><span class="icon-x">✕</span> Hard to know who to trust</li>
+        <li><span class="icon-x">✕</span> Hours wasted calling around</li>
+        <li><span class="icon-x">✕</span> No-shows and vague estimates</li>
+        <li><span class="icon-x">✕</span> Risk hiring the wrong person</li>
+      </ul>
+    </div>
+    <div class="compare-col good reveal" style="transition-delay:0.12s">
+      <div class="compare-head">With VendorReady</div>
+      <ul class="compare-list">
+        <li><span class="icon-check">✓</span> Curated, vetted contractors only</li>
+        <li><span class="icon-check">✓</span> Filtered for reliability &amp; reviews</li>
+        <li><span class="icon-check">✓</span> Faster decisions, less back-and-forth</li>
+        <li><span class="icon-check">✓</span> 2–3 ready-to-call options delivered</li>
+        <li><span class="icon-check">✓</span> Less risk, better outcomes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: CTA -->
+<section class="cta-section" id="cta">
+  <div class="label">Get Started</div>
+  <h2>Need contractors<br>for a project?</h2>
+  <p>Send your request and we'll deliver vetted options within 24–48 hours.</p>
+  <a href="https://forms.google.com" class="btn" target="_blank">Get Contractors Now</a>
+  <div class="cta-options">
+    <span class="cta-or">or</span>
+    <span class="cta-email">Email us at <a href="mailto:hello@vendorready.com">hello@vendorready.com</a></span>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo">Vendor<span>Ready</span></a>
+  <p>© 2026 VendorReady. All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
